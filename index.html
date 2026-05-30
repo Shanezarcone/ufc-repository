@@ -16,7 +16,6 @@
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
-
 nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font-family:'Instrument Serif',serif;font-size:20px;color:var(--text)}
 .nav-links{display:flex;gap:2rem;list-style:none}
@@ -24,7 +23,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.95);backdrop
 .nav-links a:hover{color:var(--text)}
 .nav-btn{background:var(--text);color:#fff;padding:8px 20px;border-radius:50px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .2s}
 .nav-btn:hover{opacity:.8}
-
 .hero{max-width:820px;margin:0 auto;padding:7rem 2rem 5rem;text-align:center}
 .tag{display:inline-flex;align-items:center;gap:6px;background:var(--red-light);color:var(--red);font-size:12px;font-weight:500;letter-spacing:.5px;padding:5px 14px;border-radius:50px;margin-bottom:2rem}
 .tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0}
@@ -32,9 +30,7 @@ h1{font-family:'Instrument Serif',serif;font-size:clamp(42px,6vw,72px);line-heig
 h1 em{font-style:italic;color:var(--red)}
 .hero-sub{font-size:17px;color:var(--muted);font-weight:300;max-width:460px;margin:0 auto 2.5rem;line-height:1.7}
 .free-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green);font-size:13px;font-weight:500;padding:6px 16px;border-radius:50px}
-
 .predictor{max-width:760px;margin:0 auto;padding:0 2rem 5rem}
-
 .fighters-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
 .fighter-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;position:relative;transition:border-color .2s}
 .fighter-card.sel{border-color:var(--green)}
@@ -55,20 +51,15 @@ h1 em{font-style:italic;color:var(--red)}
 .dempty{padding:12px 14px;font-size:13px;color:var(--muted);text-align:center}
 .hint{font-size:11px;color:var(--muted);margin-top:.5rem;min-height:14px}
 .hint.wc{color:var(--green)}
-
 .vs-div{text-align:center;font-size:13px;font-weight:500;color:var(--muted);margin:.5rem 0}
-
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 1.25rem}
 .opts select{width:100%;font-size:14px;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:'Geist',sans-serif;outline:none;-webkit-appearance:none}
 .opts select:focus{border-color:var(--green)}
-
 .pbtn{width:100%;padding:14px;font-size:15px;font-weight:500;border-radius:50px;background:var(--text);color:#fff;border:none;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Geist',sans-serif}
 .pbtn:hover{opacity:.85}
 .pbtn:disabled{opacity:.4;cursor:not-allowed}
 .unote{text-align:center;font-size:12px;color:var(--muted);margin-top:.65rem}
-
 .errmsg{background:var(--red-light);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--red);margin-top:.75rem;text-align:center;display:none}
-
 .result-wrap{margin-top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
 .result-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .result-head-title{font-size:14px;font-weight:500;color:var(--text)}
@@ -78,7 +69,6 @@ h1 em{font-style:italic;color:var(--red)}
 .winner-name{font-size:15px;font-weight:500;color:var(--text)}
 .winner-label{font-size:12px;color:var(--muted)}
 .winner-method{font-size:13px;background:var(--gold-light);color:var(--gold);padding:3px 10px;border-radius:6px;margin-left:auto;font-weight:500}
-
 .paywall{margin-top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2.5rem;text-align:center}
 .paywall h3{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;color:var(--text);margin-bottom:.5rem}
 .paywall p{font-size:14px;color:var(--muted);margin-bottom:1.5rem;line-height:1.6;max-width:360px;margin-left:auto;margin-right:auto}
@@ -90,9 +80,7 @@ h1 em{font-style:italic;color:var(--red)}
 .sub-btn{width:100%;max-width:300px;padding:14px;font-size:15px;font-weight:500;border-radius:50px;background:var(--text);color:#fff;border:none;cursor:pointer;font-family:'Geist',sans-serif;transition:opacity .2s}
 .sub-btn:hover{opacity:.85}
 .pw-note{font-size:11px;color:var(--muted);margin-top:.75rem}
-
 .divider{border:none;border-top:1px solid var(--border);margin:4rem 2rem}
-
 .pricing{max-width:760px;margin:0 auto;padding:0 2rem 5rem;text-align:center}
 .pricing h2{font-family:'Instrument Serif',serif;font-size:36px;font-weight:400;margin-bottom:.5rem}
 .pricing-sub{font-size:15px;color:var(--muted);margin-bottom:2.5rem}
@@ -112,21 +100,13 @@ h1 em{font-style:italic;color:var(--red)}
 .plan-btn.solid{background:var(--text);color:#fff;border:none}
 .plan-btn.outline{background:transparent;color:var(--text);border:1px solid var(--border)}
 .plan-btn:hover{opacity:.8}
-
 footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;align-items:center;justify-content:space-between}
 .f-logo{font-family:'Instrument Serif',serif;font-size:17px;color:var(--text)}
 footer p{font-size:12px;color:var(--muted)}
-
-@media(max-width:640px){
-  .fighters-grid,.opts,.pgrid{grid-template-columns:1fr}
-  nav{padding:0 1.5rem}
-  .nav-links{display:none}
-  footer{flex-direction:column;gap:.4rem;text-align:center}
-}
+@media(max-width:640px){.fighters-grid,.opts,.pgrid{grid-template-columns:1fr}nav{padding:0 1.5rem}.nav-links{display:none}footer{flex-direction:column;gap:.4rem;text-align:center}}
 </style>
 </head>
 <body>
-
 <nav>
   <div class="logo">FightIQ</div>
   <ul class="nav-links">
@@ -135,21 +115,18 @@ footer p{font-size:12px;color:var(--muted)}
   </ul>
   <a href="#predictor" class="nav-btn">Try Free</a>
 </nav>
-
 <div class="hero">
   <div class="tag">AI-powered UFC analysis</div>
   <h1>Predict any<br><em>UFC fight.</em></h1>
   <p class="hero-sub">Get a full AI breakdown — fighter styles, key matchup factors, and a predicted winner for any fight on the card.</p>
   <div class="free-pill">✓ First prediction is free — no account needed</div>
 </div>
-
 <div class="predictor" id="predictor">
   <div class="fighters-grid">
     <div class="fighter-card" id="card1">
       <div class="fighter-label">Fighter 1 <span class="sel-badge" id="badge1">✓ Selected</span></div>
       <div class="inp-wrap">
-        <input type="text" id="inp1" placeholder="Search fighter..." autocomplete="off"
-          oninput="filter(1)" onkeydown="key(event,1)" onfocus="focusIn(1)">
+        <input type="text" id="inp1" placeholder="Search fighter..." autocomplete="off" oninput="filter(1)" onkeydown="key(event,1)" onfocus="focusIn(1)">
         <button class="clr-btn" id="clr1" onclick="clearF(1)" aria-label="Clear">×</button>
         <div class="drop" id="drop1"></div>
       </div>
@@ -158,48 +135,29 @@ footer p{font-size:12px;color:var(--muted)}
     <div class="fighter-card" id="card2">
       <div class="fighter-label">Fighter 2 <span class="sel-badge" id="badge2">✓ Selected</span></div>
       <div class="inp-wrap">
-        <input type="text" id="inp2" placeholder="Search fighter..." autocomplete="off"
-          oninput="filter(2)" onkeydown="key(event,2)" onfocus="focusIn(2)">
+        <input type="text" id="inp2" placeholder="Search fighter..." autocomplete="off" oninput="filter(2)" onkeydown="key(event,2)" onfocus="focusIn(2)">
         <button class="clr-btn" id="clr2" onclick="clearF(2)" aria-label="Clear">×</button>
         <div class="drop" id="drop2"></div>
       </div>
       <div class="hint" id="hint2">Start typing a name...</div>
     </div>
   </div>
-
   <div class="vs-div">vs</div>
-
   <div class="opts">
-    <select id="wclass">
-      <option value="">Weight class (optional)</option>
-      <option>Heavyweight</option><option>Light Heavyweight</option><option>Middleweight</option>
-      <option>Welterweight</option><option>Lightweight</option><option>Featherweight</option>
-      <option>Bantamweight</option><option>Flyweight</option><option>Women's Strawweight</option>
-      <option>Women's Flyweight</option><option>Women's Bantamweight</option>
-    </select>
-    <select id="ctx">
-      <option value="">Context (optional)</option>
-      <option>Title fight</option><option>Main event</option><option>Co-main event</option>
-      <option>Rematch</option><option>Short notice fight</option>
-    </select>
+    <select id="wclass"><option value="">Weight class (optional)</option><option>Heavyweight</option><option>Light Heavyweight</option><option>Middleweight</option><option>Welterweight</option><option>Lightweight</option><option>Featherweight</option><option>Bantamweight</option><option>Flyweight</option><option>Women's Strawweight</option><option>Women's Flyweight</option><option>Women's Bantamweight</option></select>
+    <select id="ctx"><option value="">Context (optional)</option><option>Title fight</option><option>Main event</option><option>Co-main event</option><option>Rematch</option><option>Short notice fight</option></select>
   </div>
-
   <button class="pbtn" id="pbtn" onclick="predict()">⚡ Predict this fight</button>
   <div class="unote" id="unote"><strong style="color:#2d6a4f">1 free prediction</strong> remaining — no account needed</div>
   <div class="errmsg" id="errmsg"></div>
-
   <div id="rwrap" style="display:none" class="result-wrap">
-    <div class="result-head">
-      <div class="result-head-title" id="rtitle">Fight breakdown</div>
-      <div class="result-badge">AI Analysis</div>
-    </div>
+    <div class="result-head"><div class="result-head-title" id="rtitle">Fight breakdown</div><div class="result-badge">AI Analysis</div></div>
     <div class="result-body" id="rbody"></div>
     <div class="winner-bar" id="wbar" style="display:none">
       <div><div class="winner-label">Predicted winner</div><div class="winner-name" id="wname">—</div></div>
       <div class="winner-method" id="wmethod">—</div>
     </div>
   </div>
-
   <div id="pwrap" style="display:none" class="paywall">
     <h3>You've used your free prediction</h3>
     <p>Subscribe for unlimited breakdowns — every UFC card, every weekend.</p>
@@ -214,9 +172,7 @@ footer p{font-size:12px;color:var(--muted)}
     <div class="pw-note">Secure checkout via Stripe. Cancel anytime.</div>
   </div>
 </div>
-
 <div class="divider"></div>
-
 <div class="pricing" id="pricing">
   <h2>Simple pricing</h2>
   <p class="pricing-sub">Start free, upgrade when you're hooked.</p>
@@ -248,143 +204,56 @@ footer p{font-size:12px;color:var(--muted)}
     </div>
   </div>
 </div>
-
 <footer>
   <div class="f-logo">FightIQ</div>
   <p>© 2025 FightIQ. For entertainment purposes only.</p>
 </footer>
-
 <script>
 const FIGHTERS=[["Jon Jones","Heavyweight"],["Stipe Miocic","Heavyweight"],["Ciryl Gane","Heavyweight"],["Tom Aspinall","Heavyweight"],["Curtis Blaydes","Heavyweight"],["Sergei Pavlovich","Heavyweight"],["Alexander Volkov","Heavyweight"],["Tai Tuivasa","Heavyweight"],["Jailton Almeida","Heavyweight"],["Derrick Lewis","Heavyweight"],["Alex Pereira","Light Heavyweight"],["Jiri Prochazka","Light Heavyweight"],["Magomed Ankalaev","Light Heavyweight"],["Jamahal Hill","Light Heavyweight"],["Aleksandar Rakic","Light Heavyweight"],["Jan Blachowicz","Light Heavyweight"],["Khalil Rountree","Light Heavyweight"],["Johnny Walker","Light Heavyweight"],["Israel Adesanya","Middleweight"],["Sean Strickland","Middleweight"],["Dricus du Plessis","Middleweight"],["Robert Whittaker","Middleweight"],["Khamzat Chimaev","Middleweight"],["Paulo Costa","Middleweight"],["Marvin Vettori","Middleweight"],["Brendan Allen","Middleweight"],["Roman Dolidze","Middleweight"],["Leon Edwards","Welterweight"],["Colby Covington","Welterweight"],["Kamaru Usman","Welterweight"],["Belal Muhammad","Welterweight"],["Gilbert Burns","Welterweight"],["Jorge Masvidal","Welterweight"],["Sean Brady","Welterweight"],["Vicente Luque","Welterweight"],["Ian Machado Garry","Welterweight"],["Shavkat Rakhmonov","Welterweight"],["Jack Della Maddalena","Welterweight"],["Islam Makhachev","Lightweight"],["Charles Oliveira","Lightweight"],["Dustin Poirier","Lightweight"],["Justin Gaethje","Lightweight"],["Beneil Dariush","Lightweight"],["Michael Chandler","Lightweight"],["Conor McGregor","Lightweight"],["Dan Hooker","Lightweight"],["Arman Tsarukyan","Lightweight"],["Mateusz Gamrot","Lightweight"],["Paddy Pimblett","Lightweight"],["Alexander Volkanovski","Featherweight"],["Ilia Topuria","Featherweight"],["Brian Ortega","Featherweight"],["Yair Rodriguez","Featherweight"],["Josh Emmett","Featherweight"],["Arnold Allen","Featherweight"],["Max Holloway","Featherweight"],["Calvin Kattar","Featherweight"],["Giga Chikadze","Featherweight"],["Bryce Mitchell","Featherweight"],["Sean O'Malley","Bantamweight"],["Aljamain Sterling","Bantamweight"],["Henry Cejudo","Bantamweight"],["Marlon Vera","Bantamweight"],["Merab Dvalishvili","Bantamweight"],["Petr Yan","Bantamweight"],["Cory Sandhagen","Bantamweight"],["Dominick Cruz","Bantamweight"],["Song Yadong","Bantamweight"],["Rob Font","Bantamweight"],["Alexandre Pantoja","Flyweight"],["Brandon Royval","Flyweight"],["Amir Albazi","Flyweight"],["Brandon Moreno","Flyweight"],["Kai Kara France","Flyweight"],["Manel Kape","Flyweight"],["Matheus Nicolau","Flyweight"],["David Dvorak","Flyweight"],["Tim Elliott","Flyweight"],["Zhang Weili","Women's Strawweight"],["Yan Xiaonan","Women's Strawweight"],["Carla Esparza","Women's Strawweight"],["Rose Namajunas","Women's Strawweight"],["Jessica Andrade","Women's Strawweight"],["Marina Rodriguez","Women's Strawweight"],["Amanda Lemos","Women's Strawweight"],["Mackenzie Dern","Women's Strawweight"],["Valentina Shevchenko","Women's Flyweight"],["Alexa Grasso","Women's Flyweight"],["Taila Santos","Women's Flyweight"],["Manon Fiorot","Women's Flyweight"],["Erin Blanchfield","Women's Flyweight"],["Natalia Silva","Women's Flyweight"],["Jennifer Maia","Women's Flyweight"],["Julianna Pena","Women's Bantamweight"],["Amanda Nunes","Women's Bantamweight"],["Raquel Pennington","Women's Bantamweight"],["Holly Holm","Women's Bantamweight"],["Kayla Harrison","Women's Bantamweight"]];
-
 const S={sel:{1:null,2:null},res:{1:[],2:[]},ai:{1:-1,2:-1},freeUsed:false,busy:false};
-
-function filter(n){
-  const q=document.getElementById('inp'+n).value.trim().toLowerCase();
-  S.sel[n]=null;
-  document.getElementById('card'+n).classList.remove('sel');
-  document.getElementById('badge'+n).style.display='none';
-  document.getElementById('clr'+n).classList.remove('vis');
-  document.getElementById('hint'+n).textContent='Start typing a name...';
-  document.getElementById('hint'+n).className='hint';
-  S.ai[n]=-1;
-  if(!q){closeDrop(n);return;}
-  const res=FIGHTERS.filter(([name])=>name.toLowerCase().includes(q)).slice(0,8);
-  S.res[n]=res;
-  renderDrop(n,res,q);
-}
-
-function renderDrop(n,res,q){
-  const d=document.getElementById('drop'+n);
-  if(!res.length){d.innerHTML='<div class="dempty">No fighters found</div>';d.classList.add('open');return;}
-  const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  d.innerHTML=res.map(([name,wc],i)=>`<div class="ditem" onmousedown="selF(${n},${i})">${name.replace(new RegExp('('+esc+')','gi'),'<strong>$1</strong>')}<span class="ditem-wc">${wc}</span></div>`).join('');
-  d.classList.add('open');
-}
-
+function filter(n){const q=document.getElementById('inp'+n).value.trim().toLowerCase();S.sel[n]=null;document.getElementById('card'+n).classList.remove('sel');document.getElementById('badge'+n).style.display='none';document.getElementById('clr'+n).classList.remove('vis');document.getElementById('hint'+n).textContent='Start typing a name...';document.getElementById('hint'+n).className='hint';S.ai[n]=-1;if(!q){closeDrop(n);return;}const res=FIGHTERS.filter(([name])=>name.toLowerCase().includes(q)).slice(0,8);S.res[n]=res;renderDrop(n,res,q);}
+function renderDrop(n,res,q){const d=document.getElementById('drop'+n);if(!res.length){d.innerHTML='<div class="dempty">No fighters found</div>';d.classList.add('open');return;}const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');d.innerHTML=res.map(([name,wc],i)=>`<div class="ditem" onmousedown="selF(${n},${i})">${name.replace(new RegExp('('+esc+')','gi'),'<strong>$1</strong>')}<span class="ditem-wc">${wc}</span></div>`).join('');d.classList.add('open');}
 function focusIn(n){const q=document.getElementById('inp'+n).value.trim().toLowerCase();if(q&&!S.sel[n])filter(n);}
 function closeDrop(n){document.getElementById('drop'+n).classList.remove('open');S.ai[n]=-1;}
-
-function selF(n,i){
-  const[name,wc]=S.res[n][i];
-  S.sel[n]=name;
-  document.getElementById('inp'+n).value=name;
-  document.getElementById('card'+n).classList.add('sel');
-  document.getElementById('badge'+n).style.display='flex';
-  document.getElementById('clr'+n).classList.add('vis');
-  document.getElementById('hint'+n).textContent=wc;
-  document.getElementById('hint'+n).className='hint wc';
-  closeDrop(n);
-}
-
-function clearF(n){
-  S.sel[n]=null;
-  document.getElementById('inp'+n).value='';
-  document.getElementById('card'+n).classList.remove('sel');
-  document.getElementById('badge'+n).style.display='none';
-  document.getElementById('clr'+n).classList.remove('vis');
-  document.getElementById('hint'+n).textContent='Start typing a name...';
-  document.getElementById('hint'+n).className='hint';
-  closeDrop(n);
-  document.getElementById('inp'+n).focus();
-}
-
-function key(e,n){
-  const items=document.getElementById('drop'+n).querySelectorAll('.ditem');
-  if(!items.length)return;
-  if(e.key==='ArrowDown'){e.preventDefault();S.ai[n]=Math.min(S.ai[n]+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}
-  else if(e.key==='ArrowUp'){e.preventDefault();S.ai[n]=Math.max(S.ai[n]-1,0);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}
-  else if(e.key==='Enter'){e.preventDefault();if(S.ai[n]>=0)selF(n,S.ai[n]);else if(S.res[n].length===1)selF(n,0);}
-  else if(e.key==='Escape')closeDrop(n);
-}
-
+function selF(n,i){const[name,wc]=S.res[n][i];S.sel[n]=name;document.getElementById('inp'+n).value=name;document.getElementById('card'+n).classList.add('sel');document.getElementById('badge'+n).style.display='flex';document.getElementById('clr'+n).classList.add('vis');document.getElementById('hint'+n).textContent=wc;document.getElementById('hint'+n).className='hint wc';closeDrop(n);}
+function clearF(n){S.sel[n]=null;document.getElementById('inp'+n).value='';document.getElementById('card'+n).classList.remove('sel');document.getElementById('badge'+n).style.display='none';document.getElementById('clr'+n).classList.remove('vis');document.getElementById('hint'+n).textContent='Start typing a name...';document.getElementById('hint'+n).className='hint';closeDrop(n);document.getElementById('inp'+n).focus();}
+function key(e,n){const items=document.getElementById('drop'+n).querySelectorAll('.ditem');if(!items.length)return;if(e.key==='ArrowDown'){e.preventDefault();S.ai[n]=Math.min(S.ai[n]+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}else if(e.key==='ArrowUp'){e.preventDefault();S.ai[n]=Math.max(S.ai[n]-1,0);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}else if(e.key==='Enter'){e.preventDefault();if(S.ai[n]>=0)selF(n,S.ai[n]);else if(S.res[n].length===1)selF(n,0);}else if(e.key==='Escape')closeDrop(n);}
 document.addEventListener('click',e=>{if(!e.target.closest('#card1'))closeDrop(1);if(!e.target.closest('#card2'))closeDrop(2);});
-
-function showErr(msg){const el=document.getElementById('errmsg');el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',4000);}
-
+function showErr(msg){const el=document.getElementById('errmsg');el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',6000);}
 async function predict(){
   if(S.busy)return;
-  const f1=S.sel[1], f2=S.sel[2];
+  const f1=S.sel[1],f2=S.sel[2];
   document.getElementById('errmsg').style.display='none';
-
   if(!f1||!f2){showErr(!f1&&!f2?'Please select both fighters.':!f1?'Please select Fighter 1.':'Please select Fighter 2.');return;}
   if(f1===f2){showErr('Please select two different fighters.');return;}
-
-  if(S.freeUsed){
-    document.getElementById('pwrap').style.display='block';
-    document.getElementById('pwrap').scrollIntoView({behavior:'smooth'});
-    return;
-  }
-
+  if(S.freeUsed){document.getElementById('pwrap').style.display='block';document.getElementById('pwrap').scrollIntoView({behavior:'smooth'});return;}
   S.busy=true;
   const btn=document.getElementById('pbtn');
-  btn.disabled=true;
-  btn.textContent='Analyzing...';
-
-  const rwrap=document.getElementById('rwrap');
-  const rbody=document.getElementById('rbody');
-  rwrap.style.display='block';
-  rbody.textContent='';
+  btn.disabled=true;btn.textContent='Analyzing...';
+  const rwrap=document.getElementById('rwrap'),rbody=document.getElementById('rbody');
+  rwrap.style.display='block';rbody.textContent='';
   document.getElementById('wbar').style.display='none';
   document.getElementById('rtitle').textContent=`${f1} vs ${f2}`;
   rwrap.scrollIntoView({behavior:'smooth'});
-
   try{
-    const resp=await fetch('/.netlify/functions/predict',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({fighter1:f1,fighter2:f2,weightclass:document.getElementById('wclass').value,context:document.getElementById('ctx').value})
-    });
-
-    if(!resp.ok) throw new Error('Server error '+resp.status);
-    const data=await resp.json();
-    if(data.error) throw new Error(data.error);
-
+    const resp=await fetch('/.netlify/functions/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fighter1:f1,fighter2:f2,weightclass:document.getElementById('wclass').value,context:document.getElementById('ctx').value})});
+    let data;
+    try{data=await resp.json();}catch(e){throw new Error('Could not parse server response (status '+resp.status+')');}
+    if(!resp.ok||data.error)throw new Error(data.error||'Server error '+resp.status);
+    if(!data.text||data.text.trim()==='')throw new Error('Empty response from AI');
     rbody.textContent=data.text;
-
-    const wm=data.text.match(/Winner:\s*(.+)/i);
-    const mm=data.text.match(/Method:\s*(.+)/i);
-    if(wm){
-      document.getElementById('wname').textContent=wm[1].trim();
-      document.getElementById('wmethod').textContent=mm?mm[1].trim():'Decision';
-      document.getElementById('wbar').style.display='flex';
-    }
-
+    const wm=data.text.match(/Winner:\s*(.+)/i),mm=data.text.match(/Method:\s*(.+)/i);
+    if(wm){document.getElementById('wname').textContent=wm[1].trim();document.getElementById('wmethod').textContent=mm?mm[1].trim():'Decision';document.getElementById('wbar').style.display='flex';}
     S.freeUsed=true;
     document.getElementById('unote').innerHTML='<strong style="color:#c0392b">0 free predictions</strong> remaining — subscribe for unlimited';
-    btn.textContent='Subscribe for unlimited';
-    btn.disabled=false;
-
+    btn.textContent='Subscribe for unlimited';btn.disabled=false;
   }catch(err){
     rwrap.style.display='none';
-    showErr('Something went wrong — please try again.');
-    btn.textContent='⚡ Predict this fight';
-    btn.disabled=false;
+    showErr('Error: '+err.message);
+    btn.textContent='⚡ Predict this fight';btn.disabled=false;
   }
-
   S.busy=false;
 }
-
 function subscribe(){alert('Connect your Stripe account to activate payments.');}
 </script>
 </body>
