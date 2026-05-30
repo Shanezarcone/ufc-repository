@@ -115,52 +115,36 @@ nav{background:rgba(6,6,14,0.85);backdrop-filter:blur(16px);border-bottom:1px so
 footer{border-top:1px solid rgba(255,255,255,0.06);padding:1.75rem 2.5rem;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.3)}
 .f-logo svg{height:24px;width:auto}
 footer p{font-size:12px;color:rgba(255,255,255,0.2)}
-@media(max-width:640px){
-  .fighters-grid{grid-template-columns:1fr}
-  .vs-col{padding-top:0;padding-bottom:.5rem}
-  .opts,.pgrid{grid-template-columns:1fr}
-  nav{padding:0 1.5rem}
-  .nav-links{display:none}
-  footer{flex-direction:column;gap:.5rem;text-align:center}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
-}
+@media(max-width:640px){.fighters-grid{grid-template-columns:1fr}.vs-col{padding-top:0;padding-bottom:.5rem}.opts,.pgrid{grid-template-columns:1fr}nav{padding:0 1.5rem}.nav-links{display:none}footer{flex-direction:column;gap:.5rem;text-align:center}.stats-inner{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
-
 <div class="bg-canvas">
 <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1440" height="900" fill="#06060e"/>
-  <polygon points="720,50 1340,410 1340,490 720,850 100,490 100,410" fill="none" stroke="rgba(230,57,70,0.07)" stroke-width="1.5"/>
-  <polygon points="720,120 1270,430 1270,470 720,780 170,470 170,430" fill="none" stroke="rgba(230,57,70,0.05)" stroke-width="1"/>
-  <polygon points="720,190 1200,450 1200,450 720,710 240,450 240,450" fill="none" stroke="rgba(230,57,70,0.04)" stroke-width="1"/>
-  <line x1="720" y1="50" x2="720" y2="850" stroke="rgba(230,57,70,0.04)" stroke-width="1"/>
-  <line x1="100" y1="410" x2="1340" y2="410" stroke="rgba(230,57,70,0.03)" stroke-width="1"/>
-  <line x1="100" y1="490" x2="1340" y2="490" stroke="rgba(230,57,70,0.03)" stroke-width="1"/>
-  <line x1="720" y1="50" x2="100" y2="410" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
-  <line x1="720" y1="50" x2="1340" y2="410" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
-  <line x1="720" y1="850" x2="100" y2="490" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
-  <line x1="720" y1="850" x2="1340" y2="490" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
-  <circle cx="720" cy="450" r="180" fill="none" stroke="rgba(230,57,70,0.04)" stroke-width="1"/>
-  <circle cx="720" cy="450" r="280" fill="none" stroke="rgba(230,57,70,0.03)" stroke-width="1"/>
-  <circle cx="720" cy="450" r="380" fill="none" stroke="rgba(230,57,70,0.02)" stroke-width="1"/>
-  <circle cx="200" cy="200" r="300" fill="rgba(230,57,70,0.03)"/>
-  <circle cx="1240" cy="700" r="250" fill="rgba(230,57,70,0.025)"/>
-  <defs>
-    <linearGradient id="fadeTop" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#06060e" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#06060e" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="fadeBot" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#06060e" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#06060e" stop-opacity="1"/>
-    </linearGradient>
-  </defs>
-  <rect x="0" y="0" width="1440" height="200" fill="url(#fadeTop)"/>
-  <rect x="0" y="700" width="1440" height="200" fill="url(#fadeBot)"/>
+<rect width="1440" height="900" fill="#06060e"/>
+<polygon points="720,50 1340,410 1340,490 720,850 100,490 100,410" fill="none" stroke="rgba(230,57,70,0.07)" stroke-width="1.5"/>
+<polygon points="720,120 1270,430 1270,470 720,780 170,470 170,430" fill="none" stroke="rgba(230,57,70,0.05)" stroke-width="1"/>
+<polygon points="720,190 1200,450 1200,450 720,710 240,450 240,450" fill="none" stroke="rgba(230,57,70,0.04)" stroke-width="1"/>
+<line x1="720" y1="50" x2="720" y2="850" stroke="rgba(230,57,70,0.04)" stroke-width="1"/>
+<line x1="100" y1="410" x2="1340" y2="410" stroke="rgba(230,57,70,0.03)" stroke-width="1"/>
+<line x1="100" y1="490" x2="1340" y2="490" stroke="rgba(230,57,70,0.03)" stroke-width="1"/>
+<line x1="720" y1="50" x2="100" y2="410" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
+<line x1="720" y1="50" x2="1340" y2="410" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
+<line x1="720" y1="850" x2="100" y2="490" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
+<line x1="720" y1="850" x2="1340" y2="490" stroke="rgba(230,57,70,0.06)" stroke-width="1"/>
+<circle cx="720" cy="450" r="180" fill="none" stroke="rgba(230,57,70,0.04)" stroke-width="1"/>
+<circle cx="720" cy="450" r="280" fill="none" stroke="rgba(230,57,70,0.03)" stroke-width="1"/>
+<circle cx="720" cy="450" r="380" fill="none" stroke="rgba(230,57,70,0.02)" stroke-width="1"/>
+<circle cx="200" cy="200" r="300" fill="rgba(230,57,70,0.03)"/>
+<circle cx="1240" cy="700" r="250" fill="rgba(230,57,70,0.025)"/>
+<defs>
+<linearGradient id="fadeTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06060e" stop-opacity="1"/><stop offset="100%" stop-color="#06060e" stop-opacity="0"/></linearGradient>
+<linearGradient id="fadeBot" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06060e" stop-opacity="0"/><stop offset="100%" stop-color="#06060e" stop-opacity="1"/></linearGradient>
+</defs>
+<rect x="0" y="0" width="1440" height="200" fill="url(#fadeTop)"/>
+<rect x="0" y="700" width="1440" height="200" fill="url(#fadeBot)"/>
 </svg>
 </div>
-
 <div class="site">
 <nav>
   <div class="nav-logo">
@@ -180,7 +164,6 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <a href="#predictor" class="nav-cta">Try Free</a>
   </div>
 </nav>
-
 <div class="hero">
   <div class="hero-kicker"><div class="hero-kicker-dot"></div><span class="hero-kicker-text">AI-POWERED UFC ANALYSIS</span></div>
   <h1>Predict any<br><span>UFC fight.</span></h1>
@@ -191,7 +174,6 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
   </div>
   <div class="free-note"><span>✓ First prediction free</span> — no account needed</div>
 </div>
-
 <div class="stats-bar">
   <div class="stats-inner">
     <div><div class="stat-val">100+</div><div class="stat-label">FIGHTERS</div></div>
@@ -200,7 +182,6 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <div><div class="stat-val">$9.99</div><div class="stat-label">PER MONTH</div></div>
   </div>
 </div>
-
 <div class="predictor" id="predictor">
   <div class="section-eyebrow">Fight predictor</div>
   <div class="section-heading">Run a matchup analysis</div>
@@ -209,7 +190,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <div class="fighter-card" id="card1">
       <div class="fighter-label">Fighter 1 <span class="sel-badge" id="badge1">✓ Selected</span></div>
       <div class="inp-wrap">
-        <input type="text" id="inp1" placeholder="Search fighter..." autocomplete="off" oninput="filter(1)" onkeydown="key(event,1)" onfocus="focusIn(1)">
+        <input type="text" id="inp1" placeholder="Search fighter..." autocomplete="off" oninput="filterF(1)" onkeydown="keyF(event,1)" onfocus="focusF(1)">
         <button class="clr-btn" id="clr1" onclick="clearF(1)" aria-label="Clear">×</button>
         <div class="drop" id="drop1"></div>
       </div>
@@ -219,7 +200,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <div class="fighter-card" id="card2">
       <div class="fighter-label">Fighter 2 <span class="sel-badge" id="badge2">✓ Selected</span></div>
       <div class="inp-wrap">
-        <input type="text" id="inp2" placeholder="Search fighter..." autocomplete="off" oninput="filter(2)" onkeydown="key(event,2)" onfocus="focusIn(2)">
+        <input type="text" id="inp2" placeholder="Search fighter..." autocomplete="off" oninput="filterF(2)" onkeydown="keyF(event,2)" onfocus="focusF(2)">
         <button class="clr-btn" id="clr2" onclick="clearF(2)" aria-label="Clear">×</button>
         <div class="drop" id="drop2"></div>
       </div>
@@ -255,9 +236,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <div class="pw-note">Secure checkout via Stripe. Cancel anytime.</div>
   </div>
 </div>
-
 <div class="divider"></div>
-
 <div class="pricing" id="pricing">
   <div class="section-eyebrow">Pricing</div>
   <div class="section-heading">Simple, transparent pricing</div>
@@ -290,7 +269,6 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     </div>
   </div>
 </div>
-
 <footer>
   <div class="f-logo">
     <svg viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -303,6 +281,54 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
   <p>© 2025 FightIQ · For entertainment purposes only</p>
 </footer>
 </div>
-
 <script>
-const FIGHTERS=[["Jon Jones","Heavyweight"],["Stipe Miocic","Heavyweight"],["Ciryl Gane","Heavyweight"],["Tom Aspinall","Heavyweight"],["Curtis Blaydes","Heavyweight"],["Sergei Pavlovich","Heavyweight"],["Alexander Volkov","Heavyweight"],["Tai Tuivasa","Heavyweight"],["Jailton Almeida","Heavyweight"],["Derrick Lewis","Heavyweight"],["Alex Pereira","Light Heavyweight"],["Jiri Prochazka","Light Heavyweight"],["Magomed Ankalaev","Light Heavyweight"],["Jamahal Hill","Light Heavyweight"],["Aleksandar Rakic","Light Heavyweight"],["Jan Blachowicz","Light Heavyweight"],["Khalil Rountree","Light Heavyweight"],["Johnny Walker","Light Heavyweight"],["Israel Adesanya","Middleweight"],["Sean Strickland","Middleweight"],["Dricus du Plessis","Middleweight"],["Robert Whittaker","Middleweight"],["Khamzat Chimaev","Middleweight"],["Paulo Costa","Middleweight"],["Marvin Vettori","Middleweight"],["Brendan Allen","Middleweight"],["Roman Dolidze","Middleweight"],["Leon Edwards","Welterweight"],["Colby Covington","Welterweight"],["Kamaru Usman","Welterweight"],["Belal Muhammad","Welterweight"],["Gilbert Burns","Welterweight"],["Jorge Masvidal","Welterweight"],["Sean Brady","Welterweight"],["Vicente Luque","Welterweight"],["Ian Machado Garry","Welterweight"],["Shavkat Rakhmonov","Welterweight"],["Jack Della Maddalena","Welterweight"],["Islam Makhachev","Lightweight"],["Charles Oliveira","Lightweight"],["Dustin Poirier","Lightweight"],["Justin Gaethje","Lightweight"],["Beneil Dariush","Lightweight"],["Michael Chandler","Lightweight"],["Conor McGregor","Lightweight"],["Dan Hooker","Lightweight"],["Arman Tsarukyan","Lightweight"],["Mateusz Gamrot","Lightweight"],["Paddy Pimblett","Lightweight"],["Alexander Volkanovski","Featherweight"],["Ilia Topuria","Featherweight"],["Brian Ortega","Featherweight"],["Yair Rodriguez","Featherweight"],["Josh Emmett","Featherweight"],["Arnold Allen","Featherweight"],["Max Holloway","Featherweight"],["Calvin Kattar","Featherweight"],["Giga Chikadze","Featherweight"],["Bryce Mitchell","Featherweight"],["Sean O'Malley","Bantamweight"],["Aljamain Sterling","Bantamweight"],["Henry Cejudo","Bantamweight"],["Marlon Vera","Bantamweight"],["Merab Dvalishvili","Bantamweight"],["Petr Yan","Bantamweight"],["Cory Sandhagen","Bantamweight"],["Dominick Cruz","Bantamweight"],["Song Yadong","Bantamweight"],["Rob Font","Bantamweight"],["Alexandre Pantoja","Flyweight"],["Brandon Royval","Flyweight"],["Amir Albazi","Flyweight"],["Brandon Moreno","Flyweight"],["Kai Kara France","Flyweight"],["Manel Kape","Flyweight"],["Matheus Nicolau","Flyweight"],["David Dvorak","Flyweight"],["Tim Elliott","Flyweight"],["Zhang Weili","Women's Strawweight"],["Yan Xiaonan","Women's Strawweight"],["Carla Esparza","Women's Strawweight"],["Rose Namajunas","Women's Strawweight"],["Jessica Andrade","Women's Strawweight"],["Marina Rodriguez","Women's Strawweight"],["Amanda Lemos","Women's Strawweight"],["Mackenzie Dern","Women's Strawweight"],["Valentina Shevchenko","Women's Flyweight"],["Alexa Grasso","Women's Flyweight"],["Taila Santos","Women's Flyweight"],["Manon Fiorot","Women's Flyweight"],["Erin Blanchfield","Women's Flyweight"],["Natalia Silva","Women's Flyweight"],["Jennifer Maia","Women's Flyweight"],["Julianna Pena","Women's Bantamweight"],["Amanda Nunes","Women's Bantamweight"],["Raquel Pennington","Women's Bantamweight"],["Holly Holm","Women's Bantamweight"],["Kayla Harrison","Women's Bantamwei
+const FIGHTERS=[["Jon Jones","Heavyweight"],["Stipe Miocic","Heavyweight"],["Ciryl Gane","Heavyweight"],["Tom Aspinall","Heavyweight"],["Curtis Blaydes","Heavyweight"],["Sergei Pavlovich","Heavyweight"],["Alexander Volkov","Heavyweight"],["Tai Tuivasa","Heavyweight"],["Jailton Almeida","Heavyweight"],["Derrick Lewis","Heavyweight"],["Alex Pereira","Light Heavyweight"],["Jiri Prochazka","Light Heavyweight"],["Magomed Ankalaev","Light Heavyweight"],["Jamahal Hill","Light Heavyweight"],["Aleksandar Rakic","Light Heavyweight"],["Jan Blachowicz","Light Heavyweight"],["Khalil Rountree","Light Heavyweight"],["Johnny Walker","Light Heavyweight"],["Israel Adesanya","Middleweight"],["Sean Strickland","Middleweight"],["Dricus du Plessis","Middleweight"],["Robert Whittaker","Middleweight"],["Khamzat Chimaev","Middleweight"],["Paulo Costa","Middleweight"],["Marvin Vettori","Middleweight"],["Brendan Allen","Middleweight"],["Roman Dolidze","Middleweight"],["Leon Edwards","Welterweight"],["Colby Covington","Welterweight"],["Kamaru Usman","Welterweight"],["Belal Muhammad","Welterweight"],["Gilbert Burns","Welterweight"],["Jorge Masvidal","Welterweight"],["Sean Brady","Welterweight"],["Vicente Luque","Welterweight"],["Ian Machado Garry","Welterweight"],["Shavkat Rakhmonov","Welterweight"],["Jack Della Maddalena","Welterweight"],["Islam Makhachev","Lightweight"],["Charles Oliveira","Lightweight"],["Dustin Poirier","Lightweight"],["Justin Gaethje","Lightweight"],["Beneil Dariush","Lightweight"],["Michael Chandler","Lightweight"],["Conor McGregor","Lightweight"],["Dan Hooker","Lightweight"],["Arman Tsarukyan","Lightweight"],["Mateusz Gamrot","Lightweight"],["Paddy Pimblett","Lightweight"],["Alexander Volkanovski","Featherweight"],["Ilia Topuria","Featherweight"],["Brian Ortega","Featherweight"],["Yair Rodriguez","Featherweight"],["Josh Emmett","Featherweight"],["Arnold Allen","Featherweight"],["Max Holloway","Featherweight"],["Calvin Kattar","Featherweight"],["Giga Chikadze","Featherweight"],["Bryce Mitchell","Featherweight"],["Sean O'Malley","Bantamweight"],["Aljamain Sterling","Bantamweight"],["Henry Cejudo","Bantamweight"],["Marlon Vera","Bantamweight"],["Merab Dvalishvili","Bantamweight"],["Petr Yan","Bantamweight"],["Cory Sandhagen","Bantamweight"],["Dominick Cruz","Bantamweight"],["Song Yadong","Bantamweight"],["Rob Font","Bantamweight"],["Alexandre Pantoja","Flyweight"],["Brandon Royval","Flyweight"],["Amir Albazi","Flyweight"],["Brandon Moreno","Flyweight"],["Kai Kara France","Flyweight"],["Manel Kape","Flyweight"],["Matheus Nicolau","Flyweight"],["David Dvorak","Flyweight"],["Tim Elliott","Flyweight"],["Zhang Weili","Women's Strawweight"],["Yan Xiaonan","Women's Strawweight"],["Carla Esparza","Women's Strawweight"],["Rose Namajunas","Women's Strawweight"],["Jessica Andrade","Women's Strawweight"],["Marina Rodriguez","Women's Strawweight"],["Amanda Lemos","Women's Strawweight"],["Mackenzie Dern","Women's Strawweight"],["Valentina Shevchenko","Women's Flyweight"],["Alexa Grasso","Women's Flyweight"],["Taila Santos","Women's Flyweight"],["Manon Fiorot","Women's Flyweight"],["Erin Blanchfield","Women's Flyweight"],["Natalia Silva","Women's Flyweight"],["Jennifer Maia","Women's Flyweight"],["Julianna Pena","Women's Bantamweight"],["Amanda Nunes","Women's Bantamweight"],["Raquel Pennington","Women's Bantamweight"],["Holly Holm","Women's Bantamweight"],["Kayla Harrison","Women's Bantamweight"]];
+const S={sel:{1:null,2:null},res:{1:[],2:[]},ai:{1:-1,2:-1},freeUsed:localStorage.getItem('fightiq_used')==='true',busy:false};
+if(S.freeUsed){document.addEventListener('DOMContentLoaded',()=>{document.getElementById('unote').innerHTML='<span style="color:#e63946;font-weight:500">0 free predictions</span> remaining — subscribe for unlimited';document.getElementById('pbtn').textContent='Subscribe for unlimited';});}
+function filterF(n){const q=document.getElementById('inp'+n).value.trim().toLowerCase();S.sel[n]=null;document.getElementById('card'+n).classList.remove('sel');document.getElementById('badge'+n).style.display='none';document.getElementById('clr'+n).classList.remove('vis');document.getElementById('hint'+n).textContent='Start typing a name...';document.getElementById('hint'+n).className='hint';S.ai[n]=-1;if(!q){closeDrop(n);return;}const res=FIGHTERS.filter(([name])=>name.toLowerCase().includes(q)).slice(0,8);S.res[n]=res;renderDrop(n,res,q);}
+function renderDrop(n,res,q){const d=document.getElementById('drop'+n);if(!res.length){d.innerHTML='<div class="dempty">No fighters found</div>';d.classList.add('open');return;}const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');d.innerHTML=res.map(([name,wc],i)=>`<div class="ditem" onmousedown="selF(${n},${i})">${name.replace(new RegExp('('+esc+')','gi'),'<strong>$1</strong>')}<span class="ditem-wc">${wc}</span></div>`).join('');d.classList.add('open');}
+function focusF(n){const q=document.getElementById('inp'+n).value.trim().toLowerCase();if(q&&!S.sel[n])filterF(n);}
+function closeDrop(n){document.getElementById('drop'+n).classList.remove('open');S.ai[n]=-1;}
+function selF(n,i){const[name,wc]=S.res[n][i];S.sel[n]=name;document.getElementById('inp'+n).value=name;document.getElementById('card'+n).classList.add('sel');document.getElementById('badge'+n).style.display='flex';document.getElementById('clr'+n).classList.add('vis');document.getElementById('hint'+n).textContent=wc;document.getElementById('hint'+n).className='hint wc';closeDrop(n);}
+function clearF(n){S.sel[n]=null;document.getElementById('inp'+n).value='';document.getElementById('card'+n).classList.remove('sel');document.getElementById('badge'+n).style.display='none';document.getElementById('clr'+n).classList.remove('vis');document.getElementById('hint'+n).textContent='Start typing a name...';document.getElementById('hint'+n).className='hint';closeDrop(n);document.getElementById('inp'+n).focus();}
+function keyF(e,n){const items=document.getElementById('drop'+n).querySelectorAll('.ditem');if(!items.length)return;if(e.key==='ArrowDown'){e.preventDefault();S.ai[n]=Math.min(S.ai[n]+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}else if(e.key==='ArrowUp'){e.preventDefault();S.ai[n]=Math.max(S.ai[n]-1,0);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}else if(e.key==='Enter'){e.preventDefault();if(S.ai[n]>=0)selF(n,S.ai[n]);else if(S.res[n].length===1)selF(n,0);}else if(e.key==='Escape')closeDrop(n);}
+document.addEventListener('click',e=>{if(!e.target.closest('#card1'))closeDrop(1);if(!e.target.closest('#card2'))closeDrop(2);});
+function showErr(msg){const el=document.getElementById('errmsg');el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',6000);}
+async function predict(){
+  if(S.busy)return;
+  const f1=S.sel[1],f2=S.sel[2];
+  document.getElementById('errmsg').style.display='none';
+  if(!f1||!f2){showErr(!f1&&!f2?'Please select both fighters.':!f1?'Please select Fighter 1.':'Please select Fighter 2.');return;}
+  if(f1===f2){showErr('Please select two different fighters.');return;}
+  if(S.freeUsed){document.getElementById('pwrap').style.display='block';document.getElementById('pwrap').scrollIntoView({behavior:'smooth'});return;}
+  S.busy=true;
+  const btn=document.getElementById('pbtn');
+  btn.disabled=true;btn.textContent='Analyzing...';
+  const rwrap=document.getElementById('rwrap'),rbody=document.getElementById('rbody');
+  rwrap.style.display='block';rbody.textContent='';
+  document.getElementById('wbar').style.display='none';
+  document.getElementById('rtitle').textContent=`${f1} vs ${f2}`;
+  rwrap.scrollIntoView({behavior:'smooth'});
+  try{
+    const resp=await fetch('/.netlify/functions/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fighter1:f1,fighter2:f2,weightclass:document.getElementById('wclass').value,context:document.getElementById('ctx').value})});
+    let data;
+    try{data=await resp.json();}catch(e){throw new Error('Could not parse server response (status '+resp.status+')');}
+    if(!resp.ok||data.error)throw new Error(data.error||'Server error '+resp.status);
+    if(!data.text||data.text.trim()==='')throw new Error('Empty response from AI');
+    rbody.textContent=data.text;
+    const wm=data.text.match(/Winner:\s*(.+)/i),mm=data.text.match(/Method:\s*(.+)/i);
+    if(wm){document.getElementById('wname').textContent=wm[1].trim();document.getElementById('wmethod').textContent=mm?mm[1].trim():'Decision';document.getElementById('wbar').style.display='flex';}
+    S.freeUsed=true;localStorage.setItem('fightiq_used','true');
+    document.getElementById('unote').innerHTML='<span style="color:#e63946;font-weight:500">0 free predictions</span> remaining — subscribe for unlimited';
+    btn.textContent='Subscribe for unlimited';btn.disabled=false;
+  }catch(err){
+    rwrap.style.display='none';
+    showErr('Error: '+err.message);
+    btn.textContent='⚡ Predict this fight';btn.disabled=false;
+  }
+  S.busy=false;
+}
+function subscribe(){window.open('https://buy.stripe.com/9B63cxfjccjieBl3Cz53O00','_blank');}
+</script>
+</body>
+</html>
