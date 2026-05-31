@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FightIQ — UFC Fight Predictor</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',system-ui,sans-serif;background:#06060e;color:#f0f0f0;min-height:100vh;overflow-x:hidden}
@@ -14,12 +15,17 @@ body{font-family:'Inter',system-ui,sans-serif;background:#06060e;color:#f0f0f0;m
 nav{background:rgba(6,6,14,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:62px;position:sticky;top:0;z-index:100}
 .nav-logo svg{height:28px;width:auto}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:.2px;transition:color .15s}
+.nav-links a{color:rgba(255,255,255,0.45);text-decoration:none;font-size:13px;font-weight:400;transition:color .15s}
 .nav-links a:hover{color:#f0f0f0}
 .nav-right{display:flex;align-items:center;gap:12px}
 .nav-tag{font-size:10px;font-weight:600;color:#e63946;background:rgba(230,57,70,0.12);border:1px solid rgba(230,57,70,0.25);padding:3px 10px;border-radius:50px;letter-spacing:.8px}
-.nav-cta{background:#e63946;color:#fff;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .2s}
+.nav-cta{background:#e63946;color:#fff;padding:8px 18px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;transition:opacity .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
 .nav-cta:hover{opacity:.85}
+.nav-user{display:flex;align-items:center;gap:10px}
+.nav-user-email{font-size:12px;color:rgba(255,255,255,0.4)}
+.nav-logout{background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.nav-logout:hover{border-color:rgba(255,255,255,0.3);color:#f0f0f0}
+.nav-pro-badge{font-size:10px;font-weight:600;color:#4caf7d;background:rgba(76,175,61,0.1);border:1px solid rgba(76,175,61,0.2);padding:3px 10px;border-radius:50px;letter-spacing:.5px}
 .hero{max-width:900px;margin:0 auto;padding:7rem 2rem 4rem;text-align:center}
 .hero-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:5px 14px;margin-bottom:2rem}
 .hero-kicker-dot{width:6px;height:6px;border-radius:50%;background:#e63946;animation:pulse 2s infinite}
@@ -65,33 +71,34 @@ nav{background:rgba(6,6,14,0.85);backdrop-filter:blur(16px);border-bottom:1px so
 .hint.wc{color:#4caf7d}
 .vs-col{display:flex;align-items:center;justify-content:center;padding-top:2.8rem}
 .vs-badge{background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.2);border-radius:8px;padding:8px 12px;font-size:12px;font-weight:700;color:#e63946;letter-spacing:2px;font-family:'Space Grotesk',sans-serif}
-.pbtn{width:100%;padding:14px;font-size:14px;font-weight:600;border-radius:8px;background:#e63946;color:#fff;border:none;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;letter-spacing:.3px;margin-bottom:.65rem}
+.email-gate{margin-bottom:1rem}
+.email-gate input{width:100%;font-size:14px;padding:12px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.3);color:#f0f0f0;font-family:'Inter',sans-serif;outline:none;transition:border-color .18s;margin-bottom:8px}
+.email-gate input:focus{border-color:rgba(230,57,70,0.5)}
+.email-gate input::placeholder{color:rgba(255,255,255,0.25)}
+.email-note{font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-bottom:10px}
+.email-note span{color:#4caf7d}
+.pbtn{width:100%;padding:14px;font-size:14px;font-weight:600;border-radius:8px;background:#e63946;color:#fff;border:none;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Inter',sans-serif;letter-spacing:.3px}
 .pbtn:hover{opacity:.85}
 .pbtn:disabled{opacity:.3;cursor:not-allowed}
-.unote{text-align:center;font-size:12px;color:rgba(255,255,255,0.3)}
+.unote{text-align:center;font-size:12px;color:rgba(255,255,255,0.3);margin-top:.65rem}
 .errmsg{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.2);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:#e63946;margin-top:.75rem;text-align:center;display:none}
-
 .result-wrap{margin-top:1.5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden}
 .result-head{padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between}
 .result-head-title{font-size:13px;font-weight:600;color:#f0f0f0;font-family:'Space Grotesk',sans-serif}
 .result-badge{font-size:10px;font-weight:600;background:rgba(230,57,70,0.1);color:#e63946;padding:3px 10px;border-radius:4px;letter-spacing:.6px;text-transform:uppercase}
-
 .confidence-bar-wrap{padding:1.25rem 1.25rem 0}
 .confidence-label{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:.6px;text-transform:uppercase;margin-bottom:.6rem;display:flex;justify-content:space-between;align-items:center}
 .confidence-pct{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#e63946}
 .bar-track{width:100%;height:6px;background:rgba(255,255,255,0.08);border-radius:50px;overflow:hidden;margin-bottom:1.25rem}
 .bar-fill{height:100%;border-radius:50px;background:#e63946;transition:width 1s ease;width:0%}
-
 .result-sections{padding:0 1.25rem 1.25rem;display:flex;flex-direction:column;gap:1rem}
 .result-section{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:1rem}
 .result-section-title{font-size:10px;font-weight:600;color:#e63946;letter-spacing:1px;text-transform:uppercase;margin-bottom:.6rem}
 .result-section-body{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.85;white-space:pre-wrap}
-
 .winner-bar{display:flex;align-items:center;gap:12px;padding:1rem 1.25rem;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.2)}
 .winner-name{font-size:15px;font-weight:700;color:#f0f0f0;font-family:'Space Grotesk',sans-serif}
 .winner-label{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:.6px;text-transform:uppercase}
 .winner-method{font-size:12px;font-weight:600;background:rgba(230,57,70,0.1);color:#e63946;padding:4px 12px;border-radius:4px;margin-left:auto;letter-spacing:.3px}
-
 .paywall{margin-top:1.5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:2.5rem;text-align:center}
 .paywall h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:#f0f0f0;margin-bottom:.5rem;letter-spacing:-.3px}
 .paywall p{font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:1.5rem;line-height:1.6;max-width:340px;margin-left:auto;margin-right:auto}
@@ -103,6 +110,28 @@ nav{background:rgba(6,6,14,0.85);backdrop-filter:blur(16px);border-bottom:1px so
 .sub-btn{width:100%;max-width:280px;padding:13px;font-size:14px;font-weight:600;border-radius:8px;background:#e63946;color:#fff;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s}
 .sub-btn:hover{opacity:.85}
 .pw-note{font-size:11px;color:rgba(255,255,255,0.2);margin-top:.75rem}
+.success-banner{background:rgba(76,175,61,0.1);border:1px solid rgba(76,175,61,0.2);border-radius:10px;padding:1rem 1.25rem;text-align:center;margin-bottom:1.5rem;display:none}
+.success-banner p{font-size:14px;color:#4caf7d;font-weight:500}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+.modal-overlay.open{display:flex}
+.modal{background:#0f0f1a;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:2rem;width:100%;max-width:400px;margin:1rem;position:relative}
+.modal h2{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#f0f0f0;margin-bottom:.4rem;letter-spacing:-.3px}
+.modal-sub{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
+.modal-tabs{display:flex;gap:0;margin-bottom:1.5rem;background:rgba(255,255,255,0.04);border-radius:8px;padding:3px}
+.modal-tab{flex:1;padding:8px;font-size:13px;font-weight:500;border:none;background:none;color:rgba(255,255,255,0.4);cursor:pointer;border-radius:6px;font-family:'Inter',sans-serif;transition:all .2s}
+.modal-tab.active{background:#e63946;color:#fff}
+.modal-field{margin-bottom:1rem}
+.modal-field label{display:block;font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.4rem}
+.modal-field input{width:100%;font-size:14px;padding:11px 13px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.3);color:#f0f0f0;font-family:'Inter',sans-serif;outline:none;transition:border-color .18s}
+.modal-field input:focus{border-color:rgba(230,57,70,0.5)}
+.modal-field input::placeholder{color:rgba(255,255,255,0.2)}
+.modal-btn{width:100%;padding:13px;font-size:14px;font-weight:600;border-radius:8px;background:#e63946;color:#fff;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;margin-top:.5rem}
+.modal-btn:hover{opacity:.85}
+.modal-btn:disabled{opacity:.4;cursor:not-allowed}
+.modal-err{font-size:12px;color:#e63946;text-align:center;margin-top:.65rem;min-height:18px}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:rgba(255,255,255,0.3);font-size:22px;cursor:pointer;line-height:1}
+.modal-close:hover{color:#f0f0f0}
+.modal-success{font-size:13px;color:#4caf7d;text-align:center;margin-top:.65rem;display:none}
 .divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:3rem 0}
 .pricing{max-width:860px;margin:0 auto;padding:0 2rem 5rem}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:2rem}
@@ -155,6 +184,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 <rect x="0" y="700" width="1440" height="200" fill="url(#fadeBot)"/>
 </svg>
 </div>
+
 <div class="site">
 <nav>
   <div class="nav-logo">
@@ -169,11 +199,29 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <li><a href="#predictor">Predictor</a></li>
     <li><a href="#pricing">Pricing</a></li>
   </ul>
-  <div class="nav-right">
+  <div class="nav-right" id="navRight">
     <span class="nav-tag">LIVE</span>
-    <a href="#predictor" class="nav-cta">Try Free</a>
+    <button class="nav-cta" onclick="openAuth()">Sign In</button>
   </div>
 </nav>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAuth()">×</button>
+    <h2 id="modalTitle">Welcome to FightIQ</h2>
+    <p class="modal-sub">Sign in or create an account to continue.</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+      <button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Create Account</button>
+    </div>
+    <div class="modal-field"><label>Email</label><input type="email" id="authEmail" placeholder="you@email.com"></div>
+    <div class="modal-field"><label>Password</label><input type="password" id="authPassword" placeholder="••••••••"></div>
+    <button class="modal-btn" id="authBtn" onclick="handleAuth()">Sign In</button>
+    <div class="modal-err" id="authErr"></div>
+    <div class="modal-success" id="authSuccess">Account created! Check your email to confirm.</div>
+  </div>
+</div>
+
 <div class="hero">
   <div class="hero-kicker"><div class="hero-kicker-dot"></div><span class="hero-kicker-text">AI-POWERED UFC ANALYSIS</span></div>
   <h1>Predict any<br><span>UFC fight.</span></h1>
@@ -184,6 +232,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
   </div>
   <div class="free-note"><span>✓ First prediction free</span> — no account needed</div>
 </div>
+
 <div class="stats-bar">
   <div class="stats-inner">
     <div><div class="stat-val">100+</div><div class="stat-label">FIGHTERS</div></div>
@@ -192,10 +241,12 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <div><div class="stat-val">$9.99</div><div class="stat-label">PER MONTH</div></div>
   </div>
 </div>
+
 <div class="predictor" id="predictor">
   <div class="section-eyebrow">Fight predictor</div>
   <div class="section-heading">Run a matchup analysis</div>
   <div class="section-sub">Select two fighters and get a full AI breakdown in seconds.</div>
+  <div class="success-banner" id="successBanner"><p>🎉 You're now a Pro member! Unlimited predictions unlocked.</p></div>
   <div class="fighters-grid">
     <div class="fighter-card" id="card1">
       <div class="fighter-label">Fighter 1 <span class="sel-badge" id="badge1">✓ Selected</span></div>
@@ -217,7 +268,11 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
       <div class="hint" id="hint2">Start typing a name...</div>
     </div>
   </div>
-  <button class="pbtn" id="pbtn" onclick="predict()">⚡ Predict this fight</button>
+  <div class="email-gate" id="emailGate">
+    <input type="email" id="useremail" placeholder="Enter your email to unlock your free prediction..." autocomplete="email">
+    <div class="email-note"><span>✓ Free prediction</span> — no credit card needed. We'll send you weekly card breakdowns.</div>
+  </div>
+  <button class="pbtn" id="pbtn" onclick="handlePredict()">⚡ Get Free Prediction</button>
   <div class="unote" id="unote"><span style="color:#4caf7d;font-weight:500">1 free prediction</span> remaining — no account needed</div>
   <div class="errmsg" id="errmsg"></div>
   <div id="rwrap" style="display:none" class="result-wrap">
@@ -233,8 +288,8 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     </div>
   </div>
   <div id="pwrap" style="display:none" class="paywall">
-    <h3>You've used your free prediction</h3>
-    <p>Subscribe for unlimited breakdowns — every UFC card, every weekend.</p>
+    <h3>Want unlimited predictions?</h3>
+    <p>You've used your free prediction. Subscribe for full access — every fight, every card, every weekend.</p>
     <div class="pw-price">$9.99<span>/month</span></div>
     <div class="pw-feats">
       <div class="pw-feat">Unlimited predictions</div>
@@ -246,7 +301,9 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <div class="pw-note">Secure checkout via Stripe. Cancel anytime.</div>
   </div>
 </div>
+
 <div class="divider"></div>
+
 <div class="pricing" id="pricing">
   <div class="section-eyebrow">Pricing</div>
   <div class="section-heading">Simple, transparent pricing</div>
@@ -279,6 +336,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     </div>
   </div>
 </div>
+
 <footer>
   <div class="f-logo">
     <svg viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -291,10 +349,137 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
   <p>© 2025 FightIQ · For entertainment purposes only</p>
 </footer>
 </div>
+
 <script>
+const SUPABASE_URL='https://zlmsphcammsppvybambo.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_DS38I86rwlCbJwKk4Nz60Q_IzHF8m6u';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+
 const FIGHTERS=[["Jon Jones","Heavyweight"],["Stipe Miocic","Heavyweight"],["Ciryl Gane","Heavyweight"],["Tom Aspinall","Heavyweight"],["Curtis Blaydes","Heavyweight"],["Sergei Pavlovich","Heavyweight"],["Alexander Volkov","Heavyweight"],["Tai Tuivasa","Heavyweight"],["Jailton Almeida","Heavyweight"],["Derrick Lewis","Heavyweight"],["Alex Pereira","Light Heavyweight"],["Jiri Prochazka","Light Heavyweight"],["Magomed Ankalaev","Light Heavyweight"],["Jamahal Hill","Light Heavyweight"],["Aleksandar Rakic","Light Heavyweight"],["Jan Blachowicz","Light Heavyweight"],["Khalil Rountree","Light Heavyweight"],["Johnny Walker","Light Heavyweight"],["Israel Adesanya","Middleweight"],["Sean Strickland","Middleweight"],["Dricus du Plessis","Middleweight"],["Robert Whittaker","Middleweight"],["Khamzat Chimaev","Middleweight"],["Paulo Costa","Middleweight"],["Marvin Vettori","Middleweight"],["Brendan Allen","Middleweight"],["Roman Dolidze","Middleweight"],["Leon Edwards","Welterweight"],["Colby Covington","Welterweight"],["Kamaru Usman","Welterweight"],["Belal Muhammad","Welterweight"],["Gilbert Burns","Welterweight"],["Jorge Masvidal","Welterweight"],["Sean Brady","Welterweight"],["Vicente Luque","Welterweight"],["Ian Machado Garry","Welterweight"],["Shavkat Rakhmonov","Welterweight"],["Jack Della Maddalena","Welterweight"],["Islam Makhachev","Lightweight"],["Charles Oliveira","Lightweight"],["Dustin Poirier","Lightweight"],["Justin Gaethje","Lightweight"],["Beneil Dariush","Lightweight"],["Michael Chandler","Lightweight"],["Conor McGregor","Lightweight"],["Dan Hooker","Lightweight"],["Arman Tsarukyan","Lightweight"],["Mateusz Gamrot","Lightweight"],["Paddy Pimblett","Lightweight"],["Alexander Volkanovski","Featherweight"],["Ilia Topuria","Featherweight"],["Brian Ortega","Featherweight"],["Yair Rodriguez","Featherweight"],["Josh Emmett","Featherweight"],["Arnold Allen","Featherweight"],["Max Holloway","Featherweight"],["Calvin Kattar","Featherweight"],["Giga Chikadze","Featherweight"],["Bryce Mitchell","Featherweight"],["Sean O'Malley","Bantamweight"],["Aljamain Sterling","Bantamweight"],["Henry Cejudo","Bantamweight"],["Marlon Vera","Bantamweight"],["Merab Dvalishvili","Bantamweight"],["Petr Yan","Bantamweight"],["Cory Sandhagen","Bantamweight"],["Dominick Cruz","Bantamweight"],["Song Yadong","Bantamweight"],["Rob Font","Bantamweight"],["Alexandre Pantoja","Flyweight"],["Brandon Royval","Flyweight"],["Amir Albazi","Flyweight"],["Brandon Moreno","Flyweight"],["Kai Kara France","Flyweight"],["Manel Kape","Flyweight"],["Matheus Nicolau","Flyweight"],["David Dvorak","Flyweight"],["Tim Elliott","Flyweight"],["Zhang Weili","Women's Strawweight"],["Yan Xiaonan","Women's Strawweight"],["Carla Esparza","Women's Strawweight"],["Rose Namajunas","Women's Strawweight"],["Jessica Andrade","Women's Strawweight"],["Marina Rodriguez","Women's Strawweight"],["Amanda Lemos","Women's Strawweight"],["Mackenzie Dern","Women's Strawweight"],["Valentina Shevchenko","Women's Flyweight"],["Alexa Grasso","Women's Flyweight"],["Taila Santos","Women's Flyweight"],["Manon Fiorot","Women's Flyweight"],["Erin Blanchfield","Women's Flyweight"],["Natalia Silva","Women's Flyweight"],["Jennifer Maia","Women's Flyweight"],["Julianna Pena","Women's Bantamweight"],["Amanda Nunes","Women's Bantamweight"],["Raquel Pennington","Women's Bantamweight"],["Holly Holm","Women's Bantamweight"],["Kayla Harrison","Women's Bantamweight"]];
-const S={sel:{1:null,2:null},res:{1:[],2:[]},ai:{1:-1,2:-1},freeUsed:localStorage.getItem('fightiq_used')==='true',busy:false};
-if(S.freeUsed){document.addEventListener('DOMContentLoaded',()=>{document.getElementById('unote').innerHTML='<span style="color:#e63946;font-weight:500">0 free predictions</span> remaining — subscribe for unlimited';document.getElementById('pbtn').textContent='Subscribe for unlimited';});}
+
+let S={sel:{1:null,2:null},res:{1:[],2:[]},ai:{1:-1,2:-1},busy:false};
+let currentUser=null;
+let isSubscribed=false;
+let freeUsed=localStorage.getItem('fightiq_used')==='true';
+let authMode='login';
+
+// ---- INIT ----
+document.addEventListener('DOMContentLoaded',async()=>{
+  const params=new URLSearchParams(window.location.search);
+  if(params.get('subscribed')==='true'){
+    document.getElementById('successBanner').style.display='block';
+    window.history.replaceState({},'',window.location.pathname);
+    setTimeout(()=>{document.getElementById('successBanner').style.display='none';},6000);
+  }
+  const {data:{session}}=await sb.auth.getSession();
+  if(session){currentUser=session.user;await checkSubscription();}
+  updateNav();
+  updateUI();
+  sb.auth.onAuthStateChange(async(event,session)=>{
+    if(session){currentUser=session.user;await checkSubscription();}
+    else{currentUser=null;isSubscribed=false;}
+    updateNav();
+    updateUI();
+    if(session)closeAuth();
+  });
+});
+
+async function checkSubscription(){
+  if(!currentUser)return;
+  try{
+    const r=await fetch('/.netlify/functions/check-subscription',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({userId:currentUser.id})
+    });
+    const d=await r.json();
+    isSubscribed=d.subscribed===true;
+  }catch(e){isSubscribed=false;}
+}
+
+function updateNav(){
+  const el=document.getElementById('navRight');
+  if(currentUser){
+    const badge=isSubscribed?'<span class="nav-pro-badge">PRO</span>':'';
+    el.innerHTML=`<div class="nav-user">${badge}<span class="nav-user-email">${currentUser.email}</span><button class="nav-logout" onclick="signOut()">Sign out</button></div>`;
+  } else {
+    el.innerHTML=`<span class="nav-tag">LIVE</span><button class="nav-cta" onclick="openAuth()">Sign In</button>`;
+  }
+}
+
+function updateUI(){
+  const gate=document.getElementById('emailGate');
+  const unote=document.getElementById('unote');
+  const pbtn=document.getElementById('pbtn');
+  const pwrap=document.getElementById('pwrap');
+  if(isSubscribed){
+    gate.style.display='none';
+    pbtn.textContent='⚡ Predict this fight';
+    pbtn.disabled=false;
+    unote.innerHTML='<span style="color:#4caf7d;font-weight:500">PRO</span> — unlimited predictions active';
+    pwrap.style.display='none';
+  } else if(freeUsed){
+    gate.style.display='none';
+    pbtn.textContent='Subscribe for unlimited';
+    unote.innerHTML='<span style="color:#e63946;font-weight:500">0 free predictions</span> remaining';
+  } else {
+    if(currentUser){gate.style.display='none';}
+    else{gate.style.display='block';}
+    pbtn.textContent='⚡ Get Free Prediction';
+    unote.innerHTML='<span style="color:#4caf7d;font-weight:500">1 free prediction</span> remaining — no account needed';
+  }
+}
+
+// ---- AUTH ----
+function openAuth(){document.getElementById('authModal').classList.add('open');}
+function closeAuth(){document.getElementById('authModal').classList.remove('open');document.getElementById('authErr').textContent='';document.getElementById('authSuccess').style.display='none';}
+function switchTab(mode){
+  authMode=mode;
+  document.getElementById('tabLogin').classList.toggle('active',mode==='login');
+  document.getElementById('tabSignup').classList.toggle('active',mode==='signup');
+  document.getElementById('authBtn').textContent=mode==='login'?'Sign In':'Create Account';
+  document.getElementById('modalTitle').textContent=mode==='login'?'Welcome back':'Create your account';
+  document.getElementById('authErr').textContent='';
+  document.getElementById('authSuccess').style.display='none';
+}
+async function handleAuth(){
+  const email=document.getElementById('authEmail').value.trim();
+  const password=document.getElementById('authPassword').value;
+  const btn=document.getElementById('authBtn');
+  const errEl=document.getElementById('authErr');
+  const successEl=document.getElementById('authSuccess');
+  errEl.textContent='';
+  successEl.style.display='none';
+  if(!email||!password){errEl.textContent='Please fill in all fields.';return;}
+  if(password.length<6){errEl.textContent='Password must be at least 6 characters.';return;}
+  btn.disabled=true;
+  btn.textContent=authMode==='login'?'Signing in...':'Creating account...';
+  try{
+    if(authMode==='login'){
+      const{error}=await sb.auth.signInWithPassword({email,password});
+      if(error)throw error;
+    } else {
+      const{data,error}=await sb.auth.signUp({email,password});
+      if(error)throw error;
+      // Notify Shane
+      fetch('/.netlify/functions/notify-signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})}).catch(()=>{});
+      if(data?.user&&!data.session){
+        successEl.style.display='block';
+        btn.disabled=false;
+        btn.textContent='Create Account';
+        return;
+      }
+    }
+  }catch(e){
+    errEl.textContent=e.message||'Something went wrong. Please try again.';
+  }
+  btn.disabled=false;
+  btn.textContent=authMode==='login'?'Sign In':'Create Account';
+}
+async function signOut(){await sb.auth.signOut();}
+document.getElementById('authModal').addEventListener('click',e=>{if(e.target===document.getElementById('authModal'))closeAuth();});
+
+// ---- AUTOCOMPLETE ----
 function filterF(n){const q=document.getElementById('inp'+n).value.trim().toLowerCase();S.sel[n]=null;document.getElementById('card'+n).classList.remove('sel');document.getElementById('badge'+n).style.display='none';document.getElementById('clr'+n).classList.remove('vis');document.getElementById('hint'+n).textContent='Start typing a name...';document.getElementById('hint'+n).className='hint';S.ai[n]=-1;if(!q){closeDrop(n);return;}const res=FIGHTERS.filter(([name])=>name.toLowerCase().includes(q)).slice(0,8);S.res[n]=res;renderDrop(n,res,q);}
 function renderDrop(n,res,q){const d=document.getElementById('drop'+n);if(!res.length){d.innerHTML='<div class="dempty">No fighters found</div>';d.classList.add('open');return;}const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');d.innerHTML=res.map(([name,wc],i)=>`<div class="ditem" onmousedown="selF(${n},${i})">${name.replace(new RegExp('('+esc+')','gi'),'<strong>$1</strong>')}<span class="ditem-wc">${wc}</span></div>`).join('');d.classList.add('open');}
 function focusF(n){const q=document.getElementById('inp'+n).value.trim().toLowerCase();if(q&&!S.sel[n])filterF(n);}
@@ -303,15 +488,28 @@ function selF(n,i){const[name,wc]=S.res[n][i];S.sel[n]=name;document.getElementB
 function clearF(n){S.sel[n]=null;document.getElementById('inp'+n).value='';document.getElementById('card'+n).classList.remove('sel');document.getElementById('badge'+n).style.display='none';document.getElementById('clr'+n).classList.remove('vis');document.getElementById('hint'+n).textContent='Start typing a name...';document.getElementById('hint'+n).className='hint';closeDrop(n);document.getElementById('inp'+n).focus();}
 function keyF(e,n){const items=document.getElementById('drop'+n).querySelectorAll('.ditem');if(!items.length)return;if(e.key==='ArrowDown'){e.preventDefault();S.ai[n]=Math.min(S.ai[n]+1,items.length-1);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}else if(e.key==='ArrowUp'){e.preventDefault();S.ai[n]=Math.max(S.ai[n]-1,0);items.forEach((el,i)=>el.classList.toggle('active',i===S.ai[n]));}else if(e.key==='Enter'){e.preventDefault();if(S.ai[n]>=0)selF(n,S.ai[n]);else if(S.res[n].length===1)selF(n,0);}else if(e.key==='Escape')closeDrop(n);}
 document.addEventListener('click',e=>{if(!e.target.closest('#card1'))closeDrop(1);if(!e.target.closest('#card2'))closeDrop(2);});
+
+// ---- PREDICT ----
 function showErr(msg){const el=document.getElementById('errmsg');el.textContent=msg;el.style.display='block';setTimeout(()=>el.style.display='none',6000);}
 
-function parseAndRender(text,f1,f2){
-  const sections=[
-    {key:'OVERVIEW',title:'Overview'},
-    {key:'FIGHTER BREAKDOWN',title:'Fighter Breakdown'},
-    {key:'KEY FACTORS',title:'Key Factors'},
-    {key:'HOW IT PLAYS OUT',title:'How It Plays Out'},
-  ];
+function handlePredict(){
+  if(isSubscribed){predict();return;}
+  if(freeUsed){
+    document.getElementById('pwrap').style.display='block';
+    document.getElementById('pwrap').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  if(!currentUser){
+    const email=document.getElementById('useremail').value.trim();
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr('Please enter a valid email address to continue.');return;}
+    localStorage.setItem('fightiq_email',email);
+    fetch('/.netlify/functions/notify-signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,type:'free_prediction'})}).catch(()=>{});
+  }
+  predict();
+}
+
+function parseAndRender(text){
+  const sections=[{key:'OVERVIEW',title:'Overview'},{key:'FIGHTER BREAKDOWN',title:'Fighter Breakdown'},{key:'KEY FACTORS',title:'Key Factors'},{key:'HOW IT PLAYS OUT',title:'How It Plays Out'}];
   const container=document.getElementById('rsections');
   container.innerHTML='';
   sections.forEach(({key,title})=>{
@@ -324,25 +522,12 @@ function parseAndRender(text,f1,f2){
       container.appendChild(div);
     }
   });
-
   const wm=text.match(/Winner:\s*(.+)/i);
   const mm=text.match(/Method:\s*(.+)/i);
   const cm=text.match(/Confidence(?:\s*%)?:\s*(\d+)/i)||text.match(/Confidence:\s*(Low|Medium|High)/i);
-
-  if(wm){
-    document.getElementById('wname').textContent=wm[1].trim();
-    document.getElementById('wmethod').textContent=mm?mm[1].trim():'Decision';
-    document.getElementById('wbar').style.display='flex';
-  }
-
+  if(wm){document.getElementById('wname').textContent=wm[1].trim();document.getElementById('wmethod').textContent=mm?mm[1].trim():'Decision';document.getElementById('wbar').style.display='flex';}
   let pct=70;
-  if(cm){
-    const cv=cm[1].trim();
-    if(!isNaN(cv))pct=parseInt(cv);
-    else if(cv.toLowerCase()==='low')pct=55;
-    else if(cv.toLowerCase()==='medium')pct=70;
-    else if(cv.toLowerCase()==='high')pct=85;
-  }
+  if(cm){const cv=cm[1].trim();if(!isNaN(cv))pct=parseInt(cv);else if(cv.toLowerCase()==='low')pct=55;else if(cv.toLowerCase()==='medium')pct=70;else if(cv.toLowerCase()==='high')pct=85;}
   document.getElementById('confpct').textContent=pct+'%';
   setTimeout(()=>{document.getElementById('barfill').style.width=pct+'%';},100);
 }
@@ -353,7 +538,6 @@ async function predict(){
   document.getElementById('errmsg').style.display='none';
   if(!f1||!f2){showErr(!f1&&!f2?'Please select both fighters.':!f1?'Please select Fighter 1.':'Please select Fighter 2.');return;}
   if(f1===f2){showErr('Please select two different fighters.');return;}
-  if(S.freeUsed){document.getElementById('pwrap').style.display='block';document.getElementById('pwrap').scrollIntoView({behavior:'smooth'});return;}
   S.busy=true;
   const btn=document.getElementById('pbtn');
   btn.disabled=true;btn.textContent='Analyzing...';
@@ -363,6 +547,7 @@ async function predict(){
   document.getElementById('wbar').style.display='none';
   document.getElementById('barfill').style.width='0%';
   document.getElementById('confpct').textContent='—';
+  document.getElementById('pwrap').style.display='none';
   document.getElementById('rtitle').textContent=`${f1} vs ${f2}`;
   rwrap.scrollIntoView({behavior:'smooth'});
   try{
@@ -371,18 +556,33 @@ async function predict(){
     try{data=await resp.json();}catch(e){throw new Error('Could not parse server response (status '+resp.status+')');}
     if(!resp.ok||data.error)throw new Error(data.error||'Server error '+resp.status);
     if(!data.text||data.text.trim()==='')throw new Error('Empty response from AI');
-    parseAndRender(data.text,f1,f2);
-    S.freeUsed=true;localStorage.setItem('fightiq_used','true');
-    document.getElementById('unote').innerHTML='<span style="color:#e63946;font-weight:500">0 free predictions</span> remaining — subscribe for unlimited';
-    btn.textContent='Subscribe for unlimited';btn.disabled=false;
+    parseAndRender(data.text);
+    if(!isSubscribed){
+      freeUsed=true;
+      localStorage.setItem('fightiq_used','true');
+      document.getElementById('emailGate').style.display='none';
+      document.getElementById('unote').innerHTML='<span style="color:#e63946;font-weight:500">0 free predictions</span> remaining';
+      setTimeout(()=>{
+        document.getElementById('pwrap').style.display='block';
+        document.getElementById('pwrap').scrollIntoView({behavior:'smooth'});
+      },1500);
+      btn.textContent='Subscribe for unlimited';
+    } else {
+      btn.textContent='⚡ Predict this fight';
+    }
+    btn.disabled=false;
   }catch(err){
     rwrap.style.display='none';
     showErr('Error: '+err.message);
-    btn.textContent='⚡ Predict this fight';btn.disabled=false;
+    btn.textContent=isSubscribed?'⚡ Predict this fight':'⚡ Get Free Prediction';
+    btn.disabled=false;
   }
   S.busy=false;
 }
-function subscribe(){window.open('https://buy.stripe.com/9B63cxfjccjieBl3Cz53O00','_blank');}
+
+function subscribe(){
+  window.location.href='https://buy.stripe.com/9B63cxfjccjieBl3Cz53O00';
+}
 </script>
 </body>
 </html>
