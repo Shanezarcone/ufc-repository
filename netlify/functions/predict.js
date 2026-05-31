@@ -1,22 +1,14 @@
 const https = require('https');
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
-
+  if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' };
   try {
-    const { fighter1, fighter2, weightclass, context } = JSON.parse(event.body);
-
-    if (!fighter1 || !fighter2) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Both fighters are required.' }) };
-    }
-
-    const ctxLine = [weightclass, context].filter(Boolean).join(' · ');
+    const { fighter1, fighter2 } = JSON.parse(event.body);
+    if (!fighter1 || !fighter2) return { statusCode: 400, body: JSON.stringify({ error: 'Both fighters required.' }) };
 
     const prompt = `You are an expert UFC analyst. Analyze this fight matchup and provide a detailed breakdown.
 
-Fight: ${fighter1} vs ${fighter2}${ctxLine ? '\nContext: ' + ctxLine : ''}
+Fight: ${fighter1} vs ${fighter2}
 
 Structure your response exactly like this:
 
@@ -28,7 +20,9 @@ ${fighter1}: 3-4 sentences on their style, strengths, key stats, and recent form
 ${fighter2}: 3-4 sentences on their style, strengths, key stats, and recent form.
 
 KEY FACTORS
-3 bullet points (start each with -) on the most decisive factors in this fight.
+- Factor 1
+- Factor 2
+- Factor 3
 
 HOW IT PLAYS OUT
 2-3 sentences describing the most likely scenario.
@@ -36,7 +30,7 @@ HOW IT PLAYS OUT
 PREDICTION
 Winner: [name]
 Method: [KO/TKO | Submission | Decision]
-Confidence: [Low | Medium | High]
+Confidence: [number between 55 and 95]
 One sentence explaining your pick.
 
 Keep it analytical, specific, and punchy. No fluff.`;
@@ -74,16 +68,8 @@ Keep it analytical, specific, and punchy. No fluff.`;
       req.end();
     });
 
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text })
-    };
-
+    return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) };
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message })
-    };
+    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
   }
 };
