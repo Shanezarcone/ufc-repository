@@ -3,3 +3,7 @@
 
 [build.environment]
   SECRETS_SCAN_ENABLED = "false"
+
+[[scheduled-functions]]
+  name = "update-fighters"
+  schedule = "0 6 1,15 * *"
